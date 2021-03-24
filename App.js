@@ -1,7 +1,12 @@
+import 'react-native-gesture-handler';
 import React, { useState, useEffect } from 'react';
 import { Button, StyleSheet, Text, View } from 'react-native';
-import { Login } from './login';
-global.Buffer = global.Buffer || require('buffer').Buffer
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import LoginScreen from './LoginScreen';
+import MainScreen from './MainScreen';
+
+const Stack = createStackNavigator();
 
 export default function App() {
 
@@ -22,8 +27,12 @@ export default function App() {
     //     {data}님 안녕하세요.
     //   </Text>
     // </View>
-      <Login>
-      </Login>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Login" component={LoginScreen} />
+        <Stack.Screen name="Main" component={MainScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
